@@ -15,5 +15,14 @@ Il modello di rete neurale utilizzata abbiamo scelto un paradigma standard nel c
 Si articola come una combinazione tra due modelli, un Encoder che estrapola i pattern rilevati da filtri convoluzionali in cascata ( in modo da poter interpolare informazioni a diverse granularità) e un Decoder che si pone l'obbiettivo di ricostruire l'immagine di input segmentata grazie all'embedding fornito dal Encoder.  
 
 <p align="center"><img width="749" alt="unet" src="https://user-images.githubusercontent.com/124533848/217034682-8c0ef2b4-4b43-452a-bac1-ed249c3fb84f.png"></p>
-  I risultati sono discussi nel paper ma in repository sono presenti sia un csv ( [metrics.csv](https://github.com/progettomodelli2023/progetto/blob/main/metrics.csv) ) metriche di valutazione della bontà della segmentazione (come Dice e Jaccard) Seguono maggiori dettagli su come il notebook è stato organizzato e su come riprodurre i nostri risultati.
+  I risultati sono discussi nel paper ma in repository sono presenti sia un csv (metrics.csv) con metriche di valutazione della bontà della segmentazione (come Dice e Jaccard), sia una cartella di output del modello a fine del training. Seguono maggiori dettagli su come il notebook è stato organizzato e su come riprodurre i nostri risultati.
  
+***
+
+## Definizione classe BratsDataset per collezionare il dataset per training e validazione
+
+E' stata definita la classe BratsDataser per organizzare il datapoint di input e di grund-truth in quanto il processo di training è supervised ( ovvero propagando una loss di errore sull'effettiva segmentazione disponibile dal dataset). In maggior dettaglio vengono letti da file di tipo .nii le diverse tipologie di scansioni relative a un particolare paziente e in seguito vengono costrite tre immagini di segmentation per ogni label di output. Su kaggle sono presenti dei csv utili per splittare i pazienti da considerare come datapoint di training e di testing, sfruttando questi abbiamo tutto l'occorrente per generare i DataLoader utili per il training e la validazione del nostro modello.
+
+## Definizione funzioni di loss e modello Unet
+
+<img src="https://user-images.githubusercontent.com/124533848/217044417-d9866ed1-9c7b-4bce-83eb-9f6f7c17b371.png" alt="dice" width="300"/> blabla bla
