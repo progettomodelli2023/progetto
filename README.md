@@ -2,7 +2,7 @@
 Il progetto si occupa di fare semantic segmentation su diverse tipologie di risonanza magnetica al fine di classificare ogni pixel dell'immagine in una di tre label tra cui :
 - WT, 
 - TC,
-- ET,
+- ET,  
 Abbiamo sviluppato e testato il codice qui presentato su Kaggle, una piattaforma che permette di collezzionare Dataset in cloud in modo tale da poter sfruttare agilmente le scansoni 3d (molto pesanti e complesse da maneggiare in locale).  
 Il dataset considerato per questo task è [Brats2020](https://www.kaggle.com/datasets/awsaf49/brats2020-training-data) che consiste in una collezione di scansioni multimodali in 3d del cervello di deiversi pazienti, in particolare :
 - T1, native
@@ -25,4 +25,9 @@ E' stata definita la classe BratsDataser per organizzare il datapoint di input e
 
 ## Definizione funzioni di loss e modello Unet
 
-<img align="left" src="https://user-images.githubusercontent.com/124533848/217044417-d9866ed1-9c7b-4bce-83eb-9f6f7c17b371.png" alt="dice" width="300"/>  Una tipica metrica che viene considerata in sematic segmentation è il Dice score, che corrisponde al doppio del rapporto tra l'intersezione e la somma delle superfici.
+<img  src="https://user-images.githubusercontent.com/124533848/217044417-d9866ed1-9c7b-4bce-83eb-9f6f7c17b371.png" alt="dice" width="300"/><img src="https://user-images.githubusercontent.com/124533848/217057175-88c41e34-bf96-4a46-8751-7fb7bb9a9070.png" alt = "bce" height="100"/>
+
+  Una tipica metrica che viene considerata in sematic segmentation è il Dice score, che corrisponde al doppio del rapporto tra l'intersezione e la somma delle superfici.  Invece la BCE sta per binary cross-entropy ed è una loss classica per i problemi di classificazione binaria. Quest'ultima metrica, per quanto possa sembrare slegata dal nostro task, è congeniale alla misurazione dell'errore sulla segmentazione della singola label in quanto la ground-truth è codificata come un'immagine di 0 e 1 e le prediction vengono discretizzate in base a una treshold.  
+In seguito siamo passati alla definizione della struttura della rete neurale con una cascata di filtri convoluzionali e una cascata di filtri deconvoluzionali per generare quindi la famosa struttura a encoder-decoder.
+
+##
