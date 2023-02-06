@@ -25,4 +25,4 @@ E' stata definita la classe BratsDataser per organizzare il datapoint di input e
 
 ## Definizione funzioni di loss e modello Unet
 
-<img src="https://user-images.githubusercontent.com/124533848/217044417-d9866ed1-9c7b-4bce-83eb-9f6f7c17b371.png" alt="dice" width="300"/> blabla bla
+<img align="left" src="https://user-images.githubusercontent.com/124533848/217044417-d9866ed1-9c7b-4bce-83eb-9f6f7c17b371.png" alt="dice" width="300"/>  Una tipica metrica che viene considerata in sematic segmentation è il Dice score, che corrisponde al doppio del rapporto tra l'intersezione e la somma delle superfici.
