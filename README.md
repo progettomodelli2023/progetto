@@ -20,8 +20,17 @@ Si articola come una combinazione tra due modelli, un Encoder che estrapola i pa
 
 ***
   
-## Riproducibilità dei nostri esperimenti
+## Riproducibilità dei nostri esperimenti con visualizzazione segmentazione
+In modo tale da osservare in modo semplice e veloce i nostri risultati abbiamo fornito in libreria:
+- il modello di rete pretrained, alla fine del training abbiamo salvato in una cartella di checkpoint il modello in modo tale da condurre esperimenti sulle prestazioni
+- porzioni del dataset di validation, in quanto un download totale avrebbe rallentato il processo e al tempo stesso complicato il processo di riproducibilità
+- csv di validation in modo tale da creare il Dataloader  
+I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzione di pochi passaggi. Si inizia importando il nostro notebook su Colab con un runtime di tipo GPU, in seguito eseguire le sezioni iniziali di import e di definizione classe Brats, infine eseguire la sezione di test con visualizzazione che presenta i plot di input (4 tipologie di risonanza magnetica precedentemente spiegate), plot della ground truth (ovvero il risultato atteso della segmentazione per ogni tipologia di label come ET, TC e WT) e relativa segmentazione del nostro modello. Questi risultati sono anche velocemente consultabili dalla cartella output.  
 
+## Riproducibilità dei nostri esperimenti con valutazione performance in termini di Dice e Jaccard
+
+Abbiamo già discusso sulla metrica Dice e ora introdurremo una metrica detta Jaccard, tipica per stimare le prestazioni di un modello di segmentazione.
+<img align="left" src="https://user-images.githubusercontent.com/124533848/217172590-89986712-364d-4c87-b36d-52397c933740.png" width="200" />
 
 ***
 
