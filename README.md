@@ -17,6 +17,12 @@ Si articola come una combinazione tra due modelli, un Encoder che estrapola i pa
 <p align="center"><img width="749" alt="unet" src="https://user-images.githubusercontent.com/124533848/217034682-8c0ef2b4-4b43-452a-bac1-ed249c3fb84f.png"></p>
   I risultati sono discussi nel paper ma in repository sono presenti sia un csv (metrics.csv) con metriche di valutazione della bontà della segmentazione (come Dice e Jaccard), sia una cartella di output del modello a fine del training. Seguono maggiori dettagli su come il notebook è stato organizzato e su come riprodurre i nostri risultati.
  
+
+***
+  
+## Riproducibilità dei nostri esperimenti
+
+
 ***
 
 ## Definizione classe BratsDataset per collezionare il dataset per training e validazione
@@ -30,4 +36,6 @@ E' stata definita la classe BratsDataser per organizzare il datapoint di input e
   Una tipica metrica che viene considerata in sematic segmentation è il Dice score, che corrisponde al doppio del rapporto tra l'intersezione e la somma delle superfici.  Invece la BCE sta per binary cross-entropy ed è una loss classica per i problemi di classificazione binaria. Quest'ultima metrica, per quanto possa sembrare slegata dal nostro task, è congeniale alla misurazione dell'errore sulla segmentazione della singola label in quanto la ground-truth è codificata come un'immagine di 0 e 1 e le prediction vengono discretizzate in base a una treshold.  
 In seguito siamo passati alla definizione della struttura della rete neurale con una cascata di filtri convoluzionali e una cascata di filtri deconvoluzionali per generare quindi la famosa struttura a encoder-decoder.
 
-##
+## Classe di training 
+Abbiamo definito una classe UnetExperiment in modo tale da stabilire in modo agile i parametri del training, i datapoints di training e validazione, i parametri strutturali della rete e alcuni parametri dell'optimizer.  
+Quest'ultimo è fondamentale al processo di training in quanto stabilisce l'algoritmo di aggiornamento dei pesi della rete in relazione alla loss di predizione sui dati di training. Come optimizer abbiamo scelto Adam, che è una scelta classica in ambito deep learning insieme a SGD (Stochastic gradient descent). Maggiori dettagli implementativi sono descritti nel notebook.
