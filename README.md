@@ -29,8 +29,9 @@ I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzion
 
 ## Riproducibilità dei nostri esperimenti con valutazione performance in termini di Dice e Jaccard
 
-Abbiamo già discusso sulla metrica Dice e ora introdurremo una metrica detta Jaccard, tipica per stimare le prestazioni di un modello di segmentazione.
-<img align="left" src="https://user-images.githubusercontent.com/124533848/217172590-89986712-364d-4c87-b36d-52397c933740.png" width="200" />
+<img align="left" src="https://user-images.githubusercontent.com/124533848/217172590-89986712-364d-4c87-b36d-52397c933740.png" width="300" />  Abbiamo già discusso sulla metrica Dice e ora introdurremo una metrica detta Jaccard, tipica per stimare le prestazioni di un modello di segmentazione. Il Jaccard index è una misura di similitudine che può essere utilizzata in vari campi, tra cui la semantic segmentation. Si basa sulla comparazione tra due set, dove l'intersezione rappresenta gli elementi in comune e l'unione rappresenta l'insieme completo. E' calcolato come rapporto tra l'intersezione e l'unione. Questa misura può essere utilizzata per confrontare le prestazioni di un algoritmo di segmentazione, poiché misura la corrispondenza tra le segmentazioni generate dall'algoritmo e la segmentazione corretta.  
+  
+I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzione di pochi passaggi. Si inizia importando il nostro notebook su Colab con un runtime di tipo GPU, in seguito eseguire le sezioni iniziali di import e di definizione classe Brats, infine eseguire la sezione di test del risultato atteso della segmentazione per ogni tipologia di label come ET, TC e WT in termini di Dice e Jaccard. Questi risultati sono anche velocemente consultabili dal csv (metrics.csv). 
 
 ***
 
