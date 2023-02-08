@@ -1,8 +1,8 @@
 # Semantic segmentation using Unet Encoder-Decoder for Brain Tumor MRI (BRATS2020)
 Il progetto si occupa di fare semantic segmentation su diverse tipologie di risonanza magnetica al fine di classificare ogni pixel dell'immagine in una di tre label tra cui :
-- WT, 
-- TC,
-- ET,  
+- WT, "whole tumor" rappresenta l'estensione completa del fenomeno patologico
+- TC, "tumor core" circoscrive la massa tumorale (che solitamente viene considerata come parte da asportare)
+- ET,  "enhancing tumor"
 Abbiamo sviluppato e testato il codice qui presentato su Kaggle, una piattaforma che permette di collezzionare Dataset in cloud in modo tale da poter sfruttare agilmente le scansoni 3d (molto pesanti e complesse da maneggiare in locale).  
 Il dataset considerato per questo task è [Brats2020](https://www.kaggle.com/datasets/awsaf49/brats2020-training-data) che consiste in una collezione di scansioni multimodali in 3d del cervello di deiversi pazienti, in particolare :
 - T1, native
