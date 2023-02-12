@@ -1,14 +1,15 @@
 # Semantic segmentation using Unet Encoder-Decoder for Brain Tumor MRI (BRATS2020)
 Il progetto si occupa di fare semantic segmentation su diverse tipologie di risonanza magnetica al fine di classificare ogni pixel dell'immagine in una di tre label tra cui :
-- WT, "whole tumor" rappresenta l'estensione completa del fenomeno patologico
-- TC, "tumor core" circoscrive la massa tumorale (che solitamente viene considerata come parte da asportare)
-- ET,  "enhancing tumor"
+* WT, "whole tumor" rappresenta l'estensione completa del fenomeno patologico
+* TC, "tumor core" circoscrive la massa tumorale (che solitamente viene considerata come parte da asportare)
+* ET,  "enhancing tumor" lesioni di tipo Gadolinium-enhancing che riflettono le zone attive  
+  
 Abbiamo sviluppato e testato il codice qui presentato su Kaggle, una piattaforma che permette di collezzionare Dataset in cloud in modo tale da poter sfruttare agilmente le scansoni 3d (molto pesanti e complesse da maneggiare in locale).  
 Il dataset considerato per questo task è [Brats2020](https://www.kaggle.com/datasets/awsaf49/brats2020-training-data) che consiste in una collezione di scansioni multimodali in 3d del cervello di deiversi pazienti, in particolare :
-- T1, native
-- T1Gd, post-contrast T1-weighted
-- T2, T2-weighted
-- FLAIR, Fluid Attenuated Inversion Recovery T2
+* T1, native
+* T1Gd, post-contrast T1-weighted
+* T2, T2-weighted
+* FLAIR, Fluid Attenuated Inversion Recovery T2
 Ogni scansione ha dimensioni (240 x 240 x 155 )  
   
 Il modello di rete neurale utilizzata abbiamo scelto un paradigma standard nel caso di semantic segmentation : [Unet](https://arxiv.org/abs/1505.04597)  
@@ -22,16 +23,18 @@ Si articola come una combinazione tra due modelli, un Encoder che estrapola i pa
   
 ## Riproducibilità dei nostri esperimenti con visualizzazione segmentazione
 In modo tale da osservare in modo semplice e veloce i nostri risultati abbiamo fornito in libreria:
-- il modello di rete pretrained, alla fine del training abbiamo salvato in una cartella di checkpoint il modello in modo tale da condurre esperimenti sulle prestazioni
-- porzioni del dataset di validation, in quanto un download totale avrebbe rallentato il processo e al tempo stesso complicato il processo di riproducibilità
-- csv di validation in modo tale da creare il Dataloader  
+* il modello di rete pretrained, alla fine del training abbiamo salvato in una cartella di checkpoint il modello in modo tale da condurre esperimenti sulle prestazioni
+* porzioni del dataset di validation, in quanto un download totale avrebbe rallentato il processo e al tempo stesso complicato il processo di riproducibilità
+* csv di validation in modo tale da creare il Dataloader
+  
 I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzione di pochi passaggi. Si inizia importando il nostro notebook su Colab con un runtime di tipo GPU, in seguito eseguire le sezioni iniziali di import e di definizione classe Brats, infine eseguire la sezione di test con visualizzazione che presenta i plot di input (4 tipologie di risonanza magnetica precedentemente spiegate), plot della ground truth (ovvero il risultato atteso della segmentazione per ogni tipologia di label come ET, TC e WT) e relativa segmentazione del nostro modello. Questi risultati sono anche velocemente consultabili dalla cartella output.  
 
-## Riproducibilità dei nostri esperimenti con valutazione performance in termini di Dice e Jaccard
+## Riproducibilità dei nostri esperimenti con valutazione in termini di Dice e Jaccard
 
-<img align="left" src="https://user-images.githubusercontent.com/124533848/217172590-89986712-364d-4c87-b36d-52397c933740.png" width="300" />  Abbiamo già discusso sulla metrica Dice e ora introdurremo una metrica detta Jaccard, tipica per stimare le prestazioni di un modello di segmentazione. Il Jaccard index è una misura di similitudine che può essere utilizzata in vari campi, tra cui la semantic segmentation. Si basa sulla comparazione tra due set, dove l'intersezione rappresenta gli elementi in comune e l'unione rappresenta l'insieme completo. E' calcolato come rapporto tra l'intersezione e l'unione. Questa misura può essere utilizzata per confrontare le prestazioni di un algoritmo di segmentazione, poiché misura la corrispondenza tra le segmentazioni generate dall'algoritmo e la segmentazione corretta.  
+<img align="right" src="https://user-images.githubusercontent.com/124533848/217172590-89986712-364d-4c87-b36d-52397c933740.png" width="350" />  Abbiamo già discusso sulla metrica Dice e ora introdurremo una metrica detta Jaccard, tipica per stimare le prestazioni di un modello di segmentazione. Il Jaccard index è una misura di similitudine che può essere utilizzata in vari campi, tra cui la semantic segmentation. Si basa sulla comparazione tra due set, dove l'intersezione rappresenta gli elementi in comune e l'unione rappresenta l'insieme completo. E' calcolato come rapporto tra l'intersezione e l'unione. Questa misura può essere utilizzata per confrontare le prestazioni di un algoritmo di segmentazione, poiché misura la corrispondenza tra le segmentazioni generate dall'algoritmo e la segmentazione corretta.  
+
   
-I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzione di pochi passaggi. Si inizia importando il nostro notebook su Colab con un runtime di tipo GPU, in seguito eseguire le sezioni iniziali di import e di definizione classe Brats, infine eseguire la sezione di test del risultato atteso della segmentazione per ogni tipologia di label come ET, TC e WT in termini di Dice e Jaccard. Questi risultati sono anche velocemente consultabili dal csv (metrics.csv). 
+  I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzione di pochi passaggi. Si inizia importando il nostro notebook su Colab con un runtime di tipo GPU, in seguito eseguire le sezioni iniziali di import e di definizione classe Brats, infine eseguire la sezione di test del risultato atteso della segmentazione per ogni tipologia di label come ET, TC e WT in termini di Dice e Jaccard. Questi risultati sono anche velocemente consultabili dal csv (metrics.csv). 
 
 ***
 
