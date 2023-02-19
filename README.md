@@ -1,5 +1,5 @@
 # Semantic segmentation using Unet Encoder-Decoder for Brain Tumor MRI (BRATS2020)
-Il progetto si occupa di fare semantic segmentation su diverse tipologie di risonanza magnetica al fine di classificare ogni pixel dell'immagine in una di tre label tra cui :
+Il task di questo progetto è semantic segmentation su diverse tipologie di risonanza magnetica al fine di classificare ogni pixel dell'immagine in una di tre label tra cui :
 * WT, "whole tumor" rappresenta l'estensione completa del fenomeno patologico
 * TC, "tumor core" circoscrive la massa tumorale (che solitamente viene considerata come parte da asportare)
 * ET,  "enhancing tumor" lesioni di tipo Gadolinium-enhancing che riflettono le zone attive  
@@ -12,7 +12,7 @@ Il dataset considerato per questo task è [Brats2020](https://www.kaggle.com/dat
 * FLAIR, Fluid Attenuated Inversion Recovery T2
 Ogni scansione ha dimensioni (240 x 240 x 155 )  
   
-Il modello di rete neurale utilizzata abbiamo scelto un paradigma standard nel caso di semantic segmentation : [Unet](https://arxiv.org/abs/1505.04597)  
+Il modello di rete neurale utilizzato rappresenta uno standard nel caso di semantic segmentation : [Unet](https://arxiv.org/abs/1505.04597)  
 Si articola come una combinazione tra due modelli, un Encoder che estrapola i pattern rilevati da filtri convoluzionali in cascata ( in modo da poter interpolare informazioni a diverse granularità) e un Decoder che si pone l'obbiettivo di ricostruire l'immagine di input segmentata grazie all'embedding fornito dal Encoder.  
 
 <p align="center"><img width="749" alt="unet" src="https://user-images.githubusercontent.com/124533848/217034682-8c0ef2b4-4b43-452a-bac1-ed249c3fb84f.png"></p>
