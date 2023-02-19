@@ -40,7 +40,7 @@ I punti fondamentali per riprodurre il nostro progetto consistono nell'esecuzion
 
 ## Definizione classe BratsDataset per collezionare il dataset per training e validazione
 
-E' stata definita la classe BratsDataser per organizzare il datapoint di input e di grund-truth in quanto il processo di training è supervised ( ovvero propagando una loss di errore sull'effettiva segmentazione disponibile dal dataset). In maggior dettaglio vengono letti da file di tipo .nii le diverse tipologie di scansioni relative a un particolare paziente e in seguito vengono costrite tre immagini di segmentation per ogni label di output. Su kaggle sono presenti dei csv utili per splittare i pazienti da considerare come datapoint di training e di testing, sfruttando questi abbiamo tutto l'occorrente per generare i DataLoader utili per il training e la validazione del nostro modello.
+E' stata definita la classe BratsDataser per organizzare il datapoint di input e di grund-truth in quanto il processo di training è supervised ( ovvero propagando una loss di errore sull'effettiva segmentazione disponibile dal dataset). In maggior dettaglio vengono letti da file di tipo .nii le diverse tipologie di scansioni relative a un particolare paziente e in seguito vengono costruite tre immagini di segmentation per ogni label di output. Su kaggle sono presenti dei csv utili per splittare i pazienti da considerare come datapoint di training e di testing, sfruttando questi abbiamo tutto l'occorrente per generare i DataLoader utili per il training e la validazione del nostro modello.
 
 ## Definizione funzioni di loss e modello Unet
 
